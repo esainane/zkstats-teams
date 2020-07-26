@@ -1,0 +1,50 @@
+[Unit]
+Description=Download and aggregate Zero-K team battle detail pages
+
+[Service]
+Type=simple
+User=zkteams
+Group=zkteams
+
+ExecStart=/var/lib/zkteams/scrapeindex.sh 0 600
+WorkingDirectory=/var/lib/zkteams
+
+# Play nicely with other processes on the system. We're pretty low priority.
+Nice=10
+IOSchedulingPriority=5
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=zkstats-teams
+
+# Sandbox things moderately. We still need to communicate with the outside world to fetch things.
+
+CapabilityBoundingSet=
+NoNewPrivileges=true
+
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/zkteams/demos /var/lib/zkteams/public/data
+
+PrivateTmp=true
+PrivateDevices=true
+PrivateUsers=true
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=
+RestrictNamespaces=true
+
+LockPersonality=true
+SystemCallArchitectures=native
+
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+
+PrivateMounts=true
+
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+

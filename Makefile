@@ -41,7 +41,7 @@ demos/%/detail.html:
 	mkdir -p "$(dir $@)" && cd "$(dir $@)" && curl -s "https://zero-k.info/Battles/Detail/$*" > detail.html
 	sleep 0.2
 
-public/data/timeline.json: $(RDETAILKVS)
+public/data/timeline.json: $(RDETAILKVS) demos/index.mk
 	( echo -n [ && cat demos/*/detail.json | paste -s -d, - && echo ] ) > "$@.tmp"
 	mv -f --backup=numbered "$@.tmp" "$@"
 

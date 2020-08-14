@@ -94,10 +94,11 @@ body {
 }
 
 /* Titles */
-h3 {
+h3, strong {
   font-weight: normal;
   margin: 0;
   padding: 0.2em 0.5em;
+  display: block;
 }
 
 /* Axis labels */

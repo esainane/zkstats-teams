@@ -2,6 +2,7 @@
 <meta charset="utf-8">
 <title>Datavis</title>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="lib/css/dc.css" />
 
 <body onload="dv.init('data/timeline.json');">
   <div id="vis">
@@ -10,7 +11,11 @@
 
 <!-- Libs -->
 <script src="https://d3js.org/d3.v5.js"></script>
-
+<script src="lib/js/crossfilter.js"></script>
+<script src="lib/js/dc.js"></script>
+<!-- Local libs -->
+<script src="js/variable_bar_chart.js"></script>
 <!-- Main -->
-<script src="js/timeline.js"></script>
-
+<script src="js/preprocess.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/main.js"></script>
